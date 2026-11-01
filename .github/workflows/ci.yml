@@ -101,7 +101,8 @@ jobs:
           xcode=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
           sudo xcode-select -s "$xcode"
           xcodebuild -version
-          brew install xcodegen
+          # The Harness tab builds iSH-ARM64 with meson and ninja (ios/Harness/dsh-ios/ish-arm64/app/xcode-meson.sh).
+          brew install xcodegen meson ninja
 
       - name: Kotlin/Native
         run: ./gradlew --configure-on-demand --no-configuration-cache :shared:compileKotlinIosArm64 :shared:assembleAutobotSharedDebugXCFramework
